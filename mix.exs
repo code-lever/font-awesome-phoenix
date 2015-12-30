@@ -24,7 +24,7 @@ defmodule FontAwesomePhoenix.Mixfile do
       {:dogma, "~> 0.0", only: :dev},
       {:earmark, only: :dev},
       {:ex_doc, "~> 0.10", only: :dev},
-      {:phoenix_html, "~> 2.3"},
+      {:phoenix_html, "~> 2.0"},
     ]
   end
 
