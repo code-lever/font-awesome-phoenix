@@ -6,8 +6,9 @@ defmodule FontAwesomePhoenix.HTML do
 
   ## Options:
 
-    * `:text` - xxx
-    * `:align_tag` - xxx, default is `:left`
+    * `:text` - Additional text to add next to the icon
+    * `:align_tag` - Where to align the tag next to any given text, default is `:left`
+    * `:data` - Keyword list of data tag items to add to the tag
 
   ## Examples:
 
@@ -19,13 +20,18 @@ defmodule FontAwesomePhoenix.HTML do
 
       iex> FontAwesomePhoenix.HTML.fa_icon("user-plus", text: "New User", align_tag: :right)
       {:safe, ["New User", "<i class=\\"fa fa-user-plus\\">", "", "</i>"]}
+
+      iex> FontAwesomePhoenix.HTML.fa_icon("location-arrow", data: [gps_enabled: true])
+      {:safe, ["<i class=\\"fa fa-location-arrow\\" data-gps-enabled=\\"true\\">", "", "</i>"]}
   """
+  @spec fa_icon(String.t, Keyword.t | none) :: {:safe, [String.t]}
   def fa_icon(name, opts \\ []) do
     extra_classes = Keyword.get(opts, :class, "") |> String.split(" ")
     text = Keyword.get(opts, :text, "")
     align_tag = Keyword.get(opts, :align_tag, :left)
+    data = Keyword.get(opts, :data, [])
 
-    Tag.content_tag(:i, "", class: tag_class_string(name, extra_classes))
+    Tag.content_tag(:i, "", class: tag_class_string(name, extra_classes), data: data)
     |> add_text(text, align_tag)
   end
 
