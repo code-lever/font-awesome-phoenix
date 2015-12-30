@@ -1,8 +1,12 @@
 defmodule FontAwesomePhoenix.HTML do
+  @moduledoc """
+  HTML helper functions for creating Font Awesome tags in Phoenix Framework templates.
+  """
   alias Phoenix.HTML
   alias Phoenix.HTML.Tag
 
   @doc """
+  Creates a Font Awesome icon tag.
 
   ## Options:
 
