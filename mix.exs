@@ -3,10 +3,12 @@ defmodule FontAwesomePhoenix.Mixfile do
 
   def project do
     [app: :font_awesome_phoenix,
-     version: "0.0.1",
-     elixir: "~> 1.1",
+     version: "0.1.0",
+     elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     description: description,
+     package: package,
      deps: deps]
   end
 
@@ -17,16 +19,29 @@ defmodule FontAwesomePhoenix.Mixfile do
     [applications: [:logger]]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:dogma, "~> 0.0", only: :dev},
+      {:earmark, only: :dev},
+      {:ex_doc, "~> 0.10", only: :dev},
+      {:phoenix_html, "~> 2.3"},
+    ]
+  end
+
+  defp description do
+    """
+    HTML helper functions to build Font Awesome icon tags.
+    """
+  end
+
+  defp package do
+    [
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
+      maintainers: ["Nick Veys", "Gabe Cook"],
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => "https://github.com/code-lever/font-awesome-phoenix",
+      }
+    ]
   end
 end
