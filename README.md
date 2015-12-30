@@ -7,7 +7,7 @@ HTML helper functions to create Font Awesome tags easily in Phoenix.  Based on t
 1. Add font_awesome_phoenix to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:font_awesome_phoenix, "~> 0.0.1"}]
+          [{:font_awesome_phoenix, "~> 0.1.0"}]
         end
 
 2. Add the HTML module to your `web.ex` to make it available to your templates:
