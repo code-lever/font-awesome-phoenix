@@ -20,10 +20,10 @@ defmodule FontAwesomePhoenix.HTML do
       {:safe, ["<i class=\\"fa fa-globe\\">", "", "</i>"]}
 
       iex> FontAwesomePhoenix.HTML.fa_icon("home", text: "Back to Home!")
-      {:safe, ["<i class=\\"fa fa-home\\">", "", "</i>", "Back to Home!"]}
+      {:safe, ["<i class=\\"fa fa-home\\">", "", "</i>", " Back to Home!"]}
 
       iex> FontAwesomePhoenix.HTML.fa_icon("user-plus", text: "New User", align_tag: :right)
-      {:safe, ["New User", "<i class=\\"fa fa-user-plus\\">", "", "</i>"]}
+      {:safe, ["New User ", "<i class=\\"fa fa-user-plus\\">", "", "</i>"]}
 
       iex> FontAwesomePhoenix.HTML.fa_icon("location-arrow", data: [gps_enabled: true])
       {:safe, ["<i class=\\"fa fa-location-arrow\\" data-gps-enabled=\\"true\\">", "", "</i>"]}
@@ -46,8 +46,8 @@ defmodule FontAwesomePhoenix.HTML do
     |> _add_text(tag_strings, align)
   end
   defp _add_text({:safe, ""}, safe_tag, _), do: {:safe, safe_tag}
-  defp _add_text({:safe, text}, safe_tag, :left), do: {:safe, safe_tag ++ [text]}
-  defp _add_text({:safe, text}, safe_tag, :right), do: {:safe, [text] ++ safe_tag}
+  defp _add_text({:safe, text}, safe_tag, :left), do: {:safe, safe_tag ++ [" " <> text]}
+  defp _add_text({:safe, text}, safe_tag, :right), do: {:safe, [text <> " "] ++ safe_tag}
 
   defp tag_class_string(name, extra_classes) do
     (~w(fa fa-#{name}) ++ extra_classes)
