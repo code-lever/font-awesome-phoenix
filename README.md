@@ -24,6 +24,9 @@ In your templates:
     <%= fa_icon("globe") %>
     # <i class="fa fa-globe"></i>
 
+    <%= fa_icon(["globe", "2x"]) %>
+    # <i class="fa fa-globe fa-2x"></i>
+
     <%= fa_icon("home", text: "Back to Home!") %>
     # <i class="fa fa-home"></i> Back to Home!
 

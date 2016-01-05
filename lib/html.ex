@@ -5,8 +5,8 @@ defmodule FontAwesomePhoenix.HTML do
   use Phoenix.HTML
 
   @doc """
-  Creates a Font Awesome icon tag.  The given `name` should be the icon name along with
-  any icon modifiers such as `4x`, `fw` or `li` in a space-delimited string.
+  Creates a Font Awesome icon tag.  The given `names` should be the icon name along with
+  any icon modifiers such as `4x`, `fw` or `li` in a space-delimited string or a list of strings.
 
   ## Options:
 
@@ -20,6 +20,9 @@ defmodule FontAwesomePhoenix.HTML do
       iex> FontAwesomePhoenix.HTML.fa_icon("globe")
       {:safe, ["<i class=\\"fa fa-globe\\">", "", "</i>"]}
 
+      iex> FontAwesomePhoenix.HTML.fa_icon(["globe", "4x", "li"])
+      {:safe, ["<i class=\\"fa fa-globe fa-4x fa-li\\">", "", "</i>"]}
+
       iex> FontAwesomePhoenix.HTML.fa_icon("home", text: "Back to Home!")
       {:safe, ["<i class=\\"fa fa-home\\">", "", "</i>", " Back to Home!"]}
 
@@ -32,10 +35,10 @@ defmodule FontAwesomePhoenix.HTML do
       iex> FontAwesomePhoenix.HTML.fa_icon("camera-retro 4x", class: "myclass")
       {:safe, ["<i class=\\"fa fa-camera-retro fa-4x myclass\\">", "", "</i>"]}
   """
-  @spec fa_icon(String.t, Keyword.t | none) :: {:safe, [String.t]}
-  def fa_icon(name, opts \\ []) when is_binary(name) do
+  @spec fa_icon(String.t | [String.t], Keyword.t | none) :: {:safe, [String.t]}
+  def fa_icon(names, opts \\ []) when is_binary(names) or is_list(names) do
     data = Keyword.get(opts, :data, [])
-    content_tag(:i, "", class: tag_class_string(name, opts), data: data)
+    content_tag(:i, "", class: tag_class_string(names, opts), data: data)
     |> add_text(text(opts), align_tag(opts))
   end
 
@@ -57,15 +60,20 @@ defmodule FontAwesomePhoenix.HTML do
     |> Enum.filter(&(String.length(&1) > 0))
   end
 
-  defp fa_classes(name) do
-    name
+  defp fa_classes(names) when is_binary(names) do
+    names
     |> String.split(" ")
     |> Enum.filter(&(String.length(&1) > 0))
     |> Enum.map(&"fa-#{&1}")
   end
+  defp fa_classes(names) when is_list(names) do
+    names
+    |> Enum.filter(&(String.length(&1) > 0))
+    |> Enum.map(&"fa-#{&1}")
+  end
 
-  defp tag_class_string(name, opts) do
-    (~w(fa) ++ fa_classes(name) ++ extra_classes(opts))
+  defp tag_class_string(names, opts) do
+    (~w(fa) ++ fa_classes(names) ++ extra_classes(opts))
     |> Enum.map(&String.strip/1)
     |> Enum.join(" ")
   end
