@@ -2,17 +2,18 @@ defmodule FontAwesomePhoenix.HTML do
   @moduledoc """
   HTML helper functions for creating Font Awesome tags in Phoenix Framework templates.
   """
-  alias Phoenix.HTML
-  alias Phoenix.HTML.Tag
+  use Phoenix.HTML
 
   @doc """
-  Creates a Font Awesome icon tag.
+  Creates a Font Awesome icon tag.  The given `name` should be the icon name along with
+  any icon modifiers such as `4x`, `fw` or `li` in a space-delimited string.
 
   ## Options:
 
-    * `:text` - Additional text to add next to the icon
     * `:align_tag` - Where to align the tag next to any given text, default is `:left`
+    * `:class` - Additional classes to add to the icon
     * `:data` - Keyword list of data tag items to add to the tag
+    * `:text` - Additional text to add next to the icon
 
   ## Examples:
 
@@ -27,32 +28,47 @@ defmodule FontAwesomePhoenix.HTML do
 
       iex> FontAwesomePhoenix.HTML.fa_icon("location-arrow", data: [gps_enabled: true])
       {:safe, ["<i class=\\"fa fa-location-arrow\\" data-gps-enabled=\\"true\\">", "", "</i>"]}
+
+      iex> FontAwesomePhoenix.HTML.fa_icon("camera-retro 4x", class: "myclass")
+      {:safe, ["<i class=\\"fa fa-camera-retro fa-4x myclass\\">", "", "</i>"]}
   """
   @spec fa_icon(String.t, Keyword.t | none) :: {:safe, [String.t]}
-  def fa_icon(name, opts \\ []) do
-    extra_classes = Keyword.get(opts, :class, "") |> String.split(" ")
-    text = Keyword.get(opts, :text, "")
-    align_tag = Keyword.get(opts, :align_tag, :left)
+  def fa_icon(name, opts \\ []) when is_binary(name) do
     data = Keyword.get(opts, :data, [])
-
-    Tag.content_tag(:i, "", class: tag_class_string(name, extra_classes), data: data)
-    |> add_text(text, align_tag)
+    content_tag(:i, "", class: tag_class_string(name, opts), data: data)
+    |> add_text(text(opts), align_tag(opts))
   end
 
   defp add_text({:safe, tag_strings}, text, align) do
     text
     |> String.strip
-    |> HTML.html_escape
+    |> html_escape
     |> _add_text(tag_strings, align)
   end
   defp _add_text({:safe, ""}, safe_tag, _), do: {:safe, safe_tag}
   defp _add_text({:safe, text}, safe_tag, :left), do: {:safe, safe_tag ++ [" " <> text]}
   defp _add_text({:safe, text}, safe_tag, :right), do: {:safe, [text <> " "] ++ safe_tag}
 
-  defp tag_class_string(name, extra_classes) do
-    (~w(fa fa-#{name}) ++ extra_classes)
-    |> Enum.map(&String.strip/1)
+  defp align_tag(opts), do: Keyword.get(opts, :align_tag) || :left
+
+  defp extra_classes(opts) do
+    (Keyword.get(opts, :class) || "")
+    |> String.split(" ")
     |> Enum.filter(&(String.length(&1) > 0))
+  end
+
+  defp fa_classes(name) do
+    name
+    |> String.split(" ")
+    |> Enum.filter(&(String.length(&1) > 0))
+    |> Enum.map(&"fa-#{&1}")
+  end
+
+  defp tag_class_string(name, opts) do
+    (~w(fa) ++ fa_classes(name) ++ extra_classes(opts))
+    |> Enum.map(&String.strip/1)
     |> Enum.join(" ")
   end
+
+  defp text(opts), do: Keyword.get(opts, :text) || ""
 end
