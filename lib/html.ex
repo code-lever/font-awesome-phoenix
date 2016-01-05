@@ -63,8 +63,7 @@ defmodule FontAwesomePhoenix.HTML do
   defp fa_classes(names) when is_binary(names) do
     names
     |> String.split(" ")
-    |> Enum.filter(&(String.length(&1) > 0))
-    |> Enum.map(&"fa-#{&1}")
+    |> fa_classes
   end
   defp fa_classes(names) when is_list(names) do
     names
