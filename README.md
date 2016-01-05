@@ -30,4 +30,7 @@ In your templates:
     <%= fa_icon("user-plus", text: "New User", align_tag: :right) %>
     # New User <i class="fa fa-user-plus"></i>
 
+    <%= fa_icon("camera-retro 4x", class: "myclass") %>
+    # <i class="fa fa-camera-retro fa-4x myclass"></i>
+
 Passed-in text and classes are escaped, and the returned strings are marked safe. Be sure to read [the documentation too](http://hexdocs.pm/font_awesome_phoenix)!
