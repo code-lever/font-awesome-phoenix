@@ -34,8 +34,17 @@ defmodule FontAwesomePhoenix.HTML do
 
       iex> FontAwesomePhoenix.HTML.fa_icon("camera-retro 4x", class: "myclass")
       {:safe, ["<i class=\\"fa fa-camera-retro fa-4x myclass\\">", "", "</i>"]}
+
+      iex> FontAwesomePhoenix.HTML.fa_icon("at", class: "x", data: [mood: :happy]) do
+      ...>   Phoenix.HTML.Tag.content_tag(:em, "@")
+      ...> end
+      {:safe, ["<i class=\\"fa fa-at x\\" data-mood=\\"happy\\">", ["<em>", "@", "</em>"], "</i>"]}
   """
   @spec fa_icon(String.t | [String.t], Keyword.t | none) :: {:safe, [String.t]}
+  def fa_icon(names, opts, [do: block]) when is_binary(names) or is_list(names) do
+    data = Keyword.get(opts, :data, [])
+    content_tag(:i, block, class: tag_class_string(names, opts), data: data)
+  end
   def fa_icon(names, opts \\ []) when is_binary(names) or is_list(names) do
     data = Keyword.get(opts, :data, [])
     content_tag(:i, "", class: tag_class_string(names, opts), data: data)
