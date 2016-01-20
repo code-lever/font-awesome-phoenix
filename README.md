@@ -2,12 +2,14 @@
 
 HTML helper functions to create Font Awesome tags easily in Phoenix.  Based on the great [font-awesome-rails gem](https://github.com/bokmann/font-awesome-rails), we just couldn't live without it in Phoenix.
 
+[![Build Status](https://api.travis-ci.org/code-lever/font-awesome-phoenix.svg)](https://travis-ci.org/code-lever/font-awesome-phoenix)
+
 ## Installation
 
 1. Add font_awesome_phoenix to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:font_awesome_phoenix, "~> 0.1.0"}]
+          [{:font_awesome_phoenix, "~> 0.1"}]
         end
 
 2. Add the HTML module to your `web.ex` to make it available to your templates:
