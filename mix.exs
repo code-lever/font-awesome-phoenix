@@ -22,7 +22,7 @@ defmodule FontAwesomePhoenix.Mixfile do
   defp deps do
     [
       {:dogma, "~> 0.0", only: :dev},
-      {:earmark, only: :dev},
+      {:earmark, "~> 0.0", only: :dev},
       {:ex_doc, "~> 0.10", only: :dev},
       {:phoenix_html, "~> 2.0"},
     ]
