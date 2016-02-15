@@ -1,8 +1,9 @@
 # Font Awesome for Phoenix
 
-HTML helper functions to create Font Awesome tags easily in Phoenix.  Based on the great [font-awesome-rails gem](https://github.com/bokmann/font-awesome-rails), we just couldn't live without it in Phoenix.
-
 [![Build Status](https://api.travis-ci.org/code-lever/font-awesome-phoenix.svg)](https://travis-ci.org/code-lever/font-awesome-phoenix)
+[![Hex Version](https://img.shields.io/hexpm/v/font_awesome_phoenix.svg "Hex Version")](https://hex.pm/packages/font_awesome_phoenix)
+
+HTML helper functions to create Font Awesome tags easily in Phoenix.  Based on the great [font-awesome-rails gem](https://github.com/bokmann/font-awesome-rails), we just couldn't live without it in Phoenix.
 
 ## Installation
 
