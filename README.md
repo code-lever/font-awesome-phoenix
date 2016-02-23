@@ -5,6 +5,8 @@
 
 HTML helper functions to create Font Awesome tags easily in Phoenix.  Based on the great [font-awesome-rails gem](https://github.com/bokmann/font-awesome-rails), we just couldn't live without it in Phoenix.
 
+Please note this does not include Font Awesome itself, just helpers to make it easier to use.
+
 ## Installation
 
 1. Add font_awesome_phoenix to your list of dependencies in `mix.exs`:
