@@ -41,4 +41,11 @@ In your templates:
     <%= fa_icon("camera-retro 4x", class: "myclass") %>
     # <i class="fa fa-camera-retro fa-4x myclass"></i>
 
+    <%= fa_icon("at", class: "x", data: [mood: :happy]) do %>
+      <span class="foo">Something</span>
+    <% end %>
+    # <i class="fa fa-at x" data-mood="happy">
+    #   <span class="foo">Something</span>
+    # </i>
+
 Passed-in text and classes are escaped, and the returned strings are marked safe. Be sure to read [the documentation too](http://hexdocs.pm/font_awesome_phoenix)!
