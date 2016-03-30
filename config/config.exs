@@ -8,13 +8,6 @@ use Mix.Config
 # if you want to provide default values for your application for
 # 3rd-party users, it should be done in your "mix.exs" file.
 
-if :dev == Mix.env do
-  config :dogma,
-    override: %{
-      LineLength => [max_length: 100],
-    }
-end
-
 # You can configure for your application as:
 #
 #     config :font_awesome_phoenix, key: :value
