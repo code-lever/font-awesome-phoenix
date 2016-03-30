@@ -17,30 +17,30 @@ defmodule FontAwesomePhoenix.HTML do
 
   ## Examples:
 
-      iex> FontAwesomePhoenix.HTML.fa_icon("globe")
+      iex> #{__MODULE__}.fa_icon("globe")
       {:safe, ["<i class=\\"fa fa-globe\\">", "", "</i>"]}
 
-      iex> FontAwesomePhoenix.HTML.fa_icon(["globe", "4x", "li"])
+      iex> #{__MODULE__}.fa_icon(["globe", "4x", "li"])
       {:safe, ["<i class=\\"fa fa-globe fa-4x fa-li\\">", "", "</i>"]}
 
-      iex> FontAwesomePhoenix.HTML.fa_icon("home", text: "Back to Home!")
+      iex> #{__MODULE__}.fa_icon("home", text: "Back to Home!")
       {:safe, ["<i class=\\"fa fa-home\\">", "", "</i>", " Back to Home!"]}
 
-      iex> FontAwesomePhoenix.HTML.fa_icon("user-plus", text: "New User", align_tag: :right)
+      iex> #{__MODULE__}.fa_icon("user-plus", text: "New User", align_tag: :right)
       {:safe, ["New User ", "<i class=\\"fa fa-user-plus\\">", "", "</i>"]}
 
-      iex> FontAwesomePhoenix.HTML.fa_icon("location-arrow", data: [gps_enabled: true])
+      iex> #{__MODULE__}.fa_icon("location-arrow", data: [gps_enabled: true])
       {:safe, ["<i class=\\"fa fa-location-arrow\\" data-gps-enabled=\\"true\\">", "", "</i>"]}
 
-      iex> FontAwesomePhoenix.HTML.fa_icon("camera-retro 4x", class: "myclass")
+      iex> #{__MODULE__}.fa_icon("camera-retro 4x", class: "myclass")
       {:safe, ["<i class=\\"fa fa-camera-retro fa-4x myclass\\">", "", "</i>"]}
 
-      iex> FontAwesomePhoenix.HTML.fa_icon("at") do
+      iex> #{__MODULE__}.fa_icon("at") do
       ...>   EEx.eval_string("<%= \\"stuff\\" %>")
       ...> end
       {:safe, ["<i class=\\"fa fa-at\\">", "stuff", "</i>"]}
 
-      iex> FontAwesomePhoenix.HTML.fa_icon("at", class: "x", data: [mood: :happy]) do
+      iex> #{__MODULE__}.fa_icon("at", class: "x", data: [mood: :happy]) do
       ...>   Phoenix.HTML.Tag.content_tag(:em, "@")
       ...> end
       {:safe, ["<i class=\\"fa fa-at x\\" data-mood=\\"happy\\">", ["<em>", "@", "</em>"], "</i>"]}
