@@ -22,8 +22,8 @@ defmodule FontAwesomePhoenix.Mixfile do
   defp deps do
     [
       {:credo, "~> 0.5", only: [:dev, :test]},
-      {:earmark, "~> 0.0", only: :dev},
-      {:ex_doc, "~> 0.10", only: :dev},
+      {:earmark, "~> 0.2", only: :dev},
+      {:ex_doc, "~> 0.12", only: :dev},
       {:phoenix_html, "~> 2.0"},
     ]
   end
