@@ -1,6 +1,6 @@
-%{"dogma": {:hex, :dogma, "0.1.4"},
-  "earmark": {:hex, :earmark, "0.2.1"},
-  "ex_doc": {:hex, :ex_doc, "0.11.5"},
-  "phoenix_html": {:hex, :phoenix_html, "2.5.1"},
-  "plug": {:hex, :plug, "1.1.4"},
-  "poison": {:hex, :poison, "2.1.0"}}
+%{"bunt": {:hex, :bunt, "0.1.6", "5d95a6882f73f3b9969fdfd1953798046664e6f77ec4e486e6fafc7caad97c6f", [:mix], []},
+  "credo": {:hex, :credo, "0.5.1", "2395862b94628cadf0f5c68975c1440393f425b955f1e70ce1aea267e00187a1", [:mix], [{:bunt, "~> 0.1.6", [hex: :bunt, optional: false]}]},
+  "earmark": {:hex, :earmark, "0.2.1", "ba6d26ceb16106d069b289df66751734802777a3cbb6787026dd800ffeb850f3", [:mix], []},
+  "ex_doc": {:hex, :ex_doc, "0.11.5", "0dc51cb84f8312162a2313d6c71573a9afa332333d8a332bb12540861b9834db", [:mix], [{:earmark, "~> 0.1.17 or ~> 0.2", [hex: :earmark, optional: true]}]},
+  "phoenix_html": {:hex, :phoenix_html, "2.5.1", "631053f9e345fecb5c87d9e0ccd807f7266d27e2ee4269817067af425fd81ba8", [:mix], [{:plug, "~> 0.13 or ~> 1.0", [hex: :plug, optional: false]}]},
+  "plug": {:hex, :plug, "1.1.4", "2eee0e85ad420db96e075b3191d3764d6fff61422b101dc5b02e9cce99cacfc7", [:mix], [{:cowboy, "~> 1.0", [hex: :cowboy, optional: true]}]}}
